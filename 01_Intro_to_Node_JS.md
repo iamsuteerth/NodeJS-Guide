@@ -49,7 +49,7 @@ Python (Flask), Django
 PHP with framework like laravel
 
 ### Advantage of NodeJS
--> **Usage of JS**
+-> **Usage of JS** : Which is an easy widely used language
 
 ## REPL
 > R -> Read
