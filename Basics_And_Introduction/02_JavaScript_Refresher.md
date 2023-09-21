@@ -293,4 +293,4 @@ setTimeout(() => {
     });
 }, 2000);
 ```
-> This might be difficult to understand now, but as you will go through rest of the guide, it's usage will becom clearer.
+> This might be difficult to understand now, but as you will go through rest of the guide, it's usage will become clearer.
