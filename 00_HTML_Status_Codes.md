@@ -24,7 +24,7 @@ Code | Reason | Description
 `201` | **Created** | This indicates that the request has been fulfilled and has resulted in one or more new resources being created.
 `202` | **Accepted** | This indicates that the request has been accepted for processing, but the processing has not been completed.
 `203` | Non-Authoritative Information | This indicates that the request was successful but the enclosed payload has been modified from that of the origin server's 200 (OK) response by a transforming proxy.
-`204` | No Content | This indicates that the server has successfully fulfilled the request and that there is no additional content to send in the response payload body."
+`204` | No Content | This indicates that the server has successfully fulfilled the request and that there is no additional content to send in the response payload body.
 `205` | Reset Content | This indicates that the server has fulfilled the request and desires that the user agent reset the "document view", which caused the request to be sent, to its original state as received from the origin server.
 `206` | Partial Content | This indicates that the server is successfully fulfilling a range request for the target resource by transferring one or more parts of the selected representation that correspond to the satisfiable ranges found in the requests's Range header field.
 
@@ -51,7 +51,7 @@ Code | Reason | Description
 `401` | Unauthorized | This indicates that the request has not been applied because it lacks valid authentication credentials for the target resource.
 `402` | Payment Required | *Reserved* 
 `403` | **Forbidden** | This indicates that the server understood the request but refuses to authorize it.
-`404` | **Not Found** | This indicates that the origin server did not find a current representation for the target resource or is not willing to disclose that one exists."
+`404` | **Not Found** | This indicates that the origin server did not find a current representation for the target resource or is not willing to disclose that one exists.
 `405` | Method Not Allowed | This indicates that the method specified in the request-line is known by the origin server but not supported by the target resource.
 `406` | Not Acceptable | This indicates that the target resource does not have a current representation that would be acceptable to the user agent, according to the proactive negotiation header fields received in the request, and the server is unwilling to supply a default representation.
 `407` | Proxy Authentication Required | This is similar to 401 (Unauthorized), but indicates that the client needs to authenticate itself in order to use a proxy.
@@ -65,7 +65,7 @@ Code | Reason | Description
 `415` | Unsupported Media Type | This indicates that the origin server is refusing to service the request because the payload is in a format not supported by the target resource for this method.
 `416` | Range Not Satisfiable | This indicates that none of the ranges in the request's Range header field overlap the current extent of the selected resource or that the set of ranges requested has been rejected due to invalid ranges or an excessive request of small or overlapping ranges.
 `417` | Expectation Failed | This indicates that the expectation given in the request's Expect header field could not be met by at least one of the inbound servers.
-`418` | I'm a teapot | Any attempt to brew coffee with a teapot should result in the error code 418 I'm a teapot. ***:D***
+`418` | **I'm a teapot** | Any attempt to brew coffee with a teapot should result in the error code 418 I'm a teapot. ***:D***
 `426` | Upgrade Required | This indicates that the server refuses to perform the request using the current protocol but might be willing to do so after the client upgrades to a different protocol.
 
 ### 5xx
