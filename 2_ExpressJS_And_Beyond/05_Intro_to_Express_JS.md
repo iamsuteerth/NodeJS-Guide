@@ -55,3 +55,28 @@ app.use((req, res, next) => {
     console.log('In another middleware');
 });
 ```
+Sending responses gets easier thanks to ExpressJS
+```js
+app.use((req, res, next) => {
+    console.log('In another middleware');
+    res.send('<h1> Hello from Express </h1>');
+    // Send methods by default sends text html
+});
+```
+`We can shorten the createServer and listen method to just this`
+```js
+app.listen(3000);
+```
+### Handling routes using ExpressJS
+```js
+app.use('/', (req, res) => {}); // The '/' is the default
+```
+This will work for all URLs beginning with `/`
+```js
+app.use('/add-product', () => {});
+app.use('/', () => {});
+```
+Now here, `add-product` once handled wont go to `/` because we haven't used the `next()` function.
+
+Just the way we handled routing in vanilla node js, i.e. we didn't want to send multiple responses, it's what we are doing here as well.
+
