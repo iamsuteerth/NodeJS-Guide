@@ -7,3 +7,5 @@ npm install --save express
 > Create an express js app which funnels the requests through 2 middleware functions that log something to the console and return one response.
 
 > Handle requests to `/` and `/users` such that each request only has only one handler that does something with it.
+
+The node_modules directory is removed to keep this repo clean.
