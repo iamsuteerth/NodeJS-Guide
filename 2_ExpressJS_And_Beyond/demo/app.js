@@ -10,12 +10,7 @@ app.use('/users', (req, res, next) => {
 });
 
 app.use('/', (req, res, next) => {
-    console.log('In default middleware');
-    next();
-});
-
-app.use('/', (req, res, next) => {
-    console.log('In the connected middleware');
+    console.log('In the default middleware');
     res.send('<body><ul><li>User 1</li><li>User 2</li></ul></body>');
 });
 
