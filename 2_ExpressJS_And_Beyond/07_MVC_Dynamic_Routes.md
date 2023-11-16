@@ -145,3 +145,102 @@ Now, this looks SUPER complex but let's break down what's happening.
 ### Controller
 - Connects Model and View
 - Should only make sure that the two can communicate in both directions
+
+# Dynamic Routing
+
+```js
+// Can be setup like this
+router.get("/products/:productId");
+```
+
+But its important to consider the order of this function call because `:productId` can be anything, even `delete`
+
+A tricky concept here
+
+```js
+const getProductsFromFile = cb => {
+    fs.readFile(p, (err, fileContent) => {
+        if (err) {
+        cb([]); // If error occurs, cb is called with [] as argument
+        } else {
+        cb(JSON.parse(fileContent));
+        }
+    });
+};
+
+static findById(id, cb){
+    // We have an array of objects
+    // The function here is the cb of getProductsFromFile which takes an argument called products
+    // This argument can either be [] or the json.parse()
+    getProductsFromFile(products => {
+        // roducts refers to the array we get from getProductsFromFile function and we call THIS defined function WITH products as argument
+        const product = products.find(p => p.id === id);
+        // We are doing a similar thing, we compute product and CALL the cb function with product as argument
+        cb(product);
+    });
+}
+
+// In the shop.js controller
+exports.getProduct = (req, res, next) => {
+    const prodId = req.params.productId;
+    Product.findById(prodId, (product) => {
+        console.log(product);
+    });
+    res.redirect('/');
+}
+```
+We can pass data in the request body which puts all the input data into the body.
+
+When looping through all the products and then product is a local variable available in that loop. Then in include, included in the loop doesn't get that variable by default but you can pass it to that include. You can do so by adding a second argument to the include function where you again pass an object.
+
+
+Now consider this model code
+```js
+module.exports = class Cart {
+  static addProduct(id, productPrice) {
+    // Fetch previous cart
+    // Analyze => Find existing product
+    // Add new prod/Increase quanity
+    fs.readFile(p, (err, fileContent) => {
+        let cart = { products: [], totalPrice: 0 };
+        if (!err) {
+            cart = JSON.parse(fileContent);
+        }
+        const existingProdcutIndex = cart.products.findIndex((prod) => prod.id === id);
+        const existingProdcut = cart.products[existingProdcutIndex];
+        let updatedProduct;
+        if (existingProdcut) {
+            updatedProduct = { ...existingProdcut };
+            updatedProduct.qty = updatedProduct.qty + 1;
+            cart.products = [...cart.products];
+            cart.products[existingProdcutIndex] = updatedProduct;
+        } else {
+            updatedProduct = { id: id, qty: 1 };
+            cart.products = [...cart.products, updatedProduct];
+        }
+        cart.totalPrice = cart.totalPrice +  +productPrice;
+        fs.writeFile(p, JSON.stringify(cart), err => {
+            console.log(err);
+        });
+    });
+  }
+};
+```
+- We take product id and product price as function arguments
+- Call the readFile async function passing the path p which we have defined in the top
+- We create a default cart and if we dont get an error while reading the file, we parse the file content
+- Finding the index of the product in the products array and assigning it to a variable
+- If the product is already existing, update the produt with qty as previous + 1
+- Update the products array with updated product
+- If its a NEW product, then we create the object and add it to the array
+- Update the total price
+- Write the file
+
+### Query Parameters
+`/?edit=true&title=new`
+This is called optional data
+```js
+const editMode = req.query.edit;
+// Can be accessed like this
+```
+The extracted value is always a string, so "true" instead of true
