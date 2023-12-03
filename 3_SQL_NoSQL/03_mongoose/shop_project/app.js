@@ -4,7 +4,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
-const pswd = encodeURIComponent("March@123");
+const pswd = encodeURIComponent("REDACTED");
 const uri = `mongodb+srv://suteerth:${pswd}@cluster0.4gsxvel.mongodb.net/shop?retryWrites=true&w=majority`;
 
 const errorController = require("./controllers/error");

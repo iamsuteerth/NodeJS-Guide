@@ -1,6 +1,6 @@
 // const mongodb = require("mongodb");
 // const MongoClient = mongodb.MongoClient;
-// const pswd = encodeURIComponent("March@123");
+// const pswd = encodeURIComponent("REDACTED");
 // const uri = `mongodb+srv://suteerth:${pswd}@cluster0.4gsxvel.mongodb.net/shop?retryWrites=true&w=majority`;
 // let _db;
 // const mongoConnect = (callback) => {
